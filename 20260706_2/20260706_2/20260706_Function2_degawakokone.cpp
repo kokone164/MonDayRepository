@@ -5,23 +5,35 @@
 
 void Game()
 {
+	//乱数の初期化
 	srand((unsigned int)time(NULL));
+	
+	//変数
 	int player = 0;
 	int cpu = 0;
 
 	int exp = 0;
 	int lv = 0;
 
+	int sub = 0;
+
+	int count = 0;
+
 	std::cout << "じゃんけんゲーム\nグー:0 チョキ:1 パー:2\nレベルが5になったらゲームクリア\n"
 		"====================GAME START====================" << std::endl;
 
-	while (lv == ConNum::LEVEL)
+	//ゲーム
+	while (lv != ConNum::LEVEL)
 	{
-		std::cout << "==============================\nLv:"
-			<< lv << "\nEXP:" << exp 
-			<<"=============================="<< std::endl;
+		count++;
+		std::cout << "\n==============================\nROUND:"
+			<<count
+			<<"\nLv:"<< lv 
+			<< "\nEXP:" << exp 
+			<<"\n=============================="<< std::endl;
 
 		std::cout << "出す手を決めてください\n";
+		//入力チェック
 		player = InputCheck(ConNum::PLAYER_MIN, ConNum::PLAYER_MAX);
 
 		cpu = rand() % 3;
@@ -32,13 +44,38 @@ void Game()
 		std::cout << "CPU:";
 		Hands(cpu);
 
-		if ()
-		{
+		sub = player - cpu;
 
+		//勝敗
+		if (player == cpu)
+		{
+			std::cout << "あいこ\n"
+				"\n現在のEXP:" << exp << "\n";
 		}
+		else if (sub == -1||sub == 2)
+		{
+			ExpAdd(exp);
+			std::cout << "プレイヤーの勝利\n"
+				"\n現在のEXP:"<<exp<<"\n";
+		}
+		else
+		{
+			std::cout << "CPUの勝利\n"
+				"\n現在のEXP:"<<exp<<"\n";
+		}
+
+		//レベルアップ
+		if (exp >= ConNum::EXP_MAX)
+		{
+			LevelUp(lv, exp);
+		}
+
 	}
+
+	std::cout << "GAME CLEAR\nLv:" << lv << "EXP:" << exp << std::endl;
 }
 
+//じゃんけんの手を表示する
 void Hands(int num)
 {
 	switch (num)
@@ -57,6 +94,7 @@ void Hands(int num)
 	}
 }
 
+//入力チェック
 int InputCheck(int min, int max)
 {
 	int number;
@@ -72,10 +110,11 @@ int InputCheck(int min, int max)
 		{
 			break;
 		}
-		return number;
 	}
+	return number;
 }
 
+//exp加算
 void ExpAdd(int& expNum)
 {
 	srand((unsigned int)time(NULL));
@@ -84,7 +123,9 @@ void ExpAdd(int& expNum)
 	expNum += randNum;
 }
 
-void LevelUp(int& level)
+//レベルアップ
+void LevelUp(int& level,int &expNum)
 {
-
+	level++;
+	expNum -= ConNum::EXP_MAX;
 }
