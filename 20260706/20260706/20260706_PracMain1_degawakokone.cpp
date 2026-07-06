@@ -9,7 +9,7 @@ int main(void)
 
 	cout << "HP‚ð‰ñ•œ‚µ‚Ü‚·‚©H\nŒ»Ý‚ÌHP:" << hp << "\nYesF‚PNoF‚Q" << endl;
 
-	cin >> num;
+	num = InputCheck(MIN, MAX);
 
 	if (num == 1)
 	{
