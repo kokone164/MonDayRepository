@@ -139,7 +139,14 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="20260607_Ex1.cpp" />
+    <ClCompile Include="20260607_Ex1.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="20260706_Function1_degawakokone.cpp" />
+    <ClCompile Include="20260706_PracMain1_degawakokone.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="20260706_Header1_degawakokone.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
