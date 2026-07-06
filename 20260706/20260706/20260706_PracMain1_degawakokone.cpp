@@ -8,7 +8,7 @@ int main(void)
 	int num = 0;
 
 	cout << "HP‚ğ‰ñ•œ‚µ‚Ü‚·‚©H\nŒ»İ‚ÌHP:" << hp << "\nYesF‚PNoF‚Q" << endl;
-
+	
 	num = InputCheck(MIN, MAX);
 
 	if (num == 1)
