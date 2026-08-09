@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    //変数宣言
     int player;         
     int cpu;            
     int result;         
@@ -13,16 +14,17 @@ int main()
     int win = 0;        
     int lose = 0;       
     int draw = 0;       
-
+    //乱数の初期化
     srand((unsigned int)time(nullptr));
 
     cout << "じゃんけんゲームを開始します。" << endl;
-
+    //ゲームループ
     for ( i = 0; i < 5; i++)
     {
+        //ラウンド数表示
         cout << endl;
         cout << "-------- " << i + 1 << "回戦 --------" << endl;
-
+        //入力チェック
         while (true)
         {
             cout << "0：グー　1：チョキ　2：パー" << endl;
@@ -30,16 +32,16 @@ int main()
 
             cin >> player;
 
-            if (player >= 0 && player <= 2)
+            if (player >= 0 && player <= 2)//入力が正しかったら
             {
                 break;
             }
 
             cout << "入力に誤りがあります。再入力してください。" << endl;
         }
-
+        //CPUの手を決める
         cpu = rand() % 3;
-
+        //プレイヤーの手を表示
         switch (player)
         {
         case 0:
@@ -55,7 +57,7 @@ int main()
             break;
         }
 
-
+        //CPUの手を表示
         switch (cpu)
         {
         case 0:
@@ -71,27 +73,27 @@ int main()
             break;
         }
 
-
+        //プレイヤーの手からCPUの手を引く
         result = player - cpu;
-
-        if (result == -1 || result == 2)
+        //勝敗の判定
+        if (result == -1 || result == 2)//勝ち
         {
             cout << "PLAYER WIN!" << endl;
             win++;
         }
-        else if (result == 0)
+        else if (result == 0)//引き分け
         {
             cout << "DRAW" << endl;
             draw++;
         }
-        else
+        else//負け
         {
             cout << "CPU WIN!" << endl;
             lose++;
         }
     }
 
-
+    //結果を表示
     cout << endl;
     cout << "==============================" << endl;
     cout << "5回勝負終了！" << endl;
