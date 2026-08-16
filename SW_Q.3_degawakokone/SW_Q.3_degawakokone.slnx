@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SW_Q.3_degawakokone/SW_Q.3_degawakokone.vcxproj" />
+</Solution>
