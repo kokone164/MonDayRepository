@@ -38,7 +38,9 @@ int main(void)
 
 	bool judgeflag = false;
 
-	int map[9] = {};
+	int plyMap[9] = {};
+	int cpuMap[9] = {};
+
 	//乱数の初期化
 	srand((unsigned int)time(NULL));
 	//ゲーム説明
@@ -53,16 +55,34 @@ int main(void)
 	while (true)
 	{
 		cout << "\n==========PLAYER TURN==========\n";
+		cout << "残りのマス:";
+		for (int i = 0; i < 9; i++)
+		{
+			if (plyMap[i] == 0)
+			{
+				cout << i + 1 << ",";
+			}
+		}
+		
 		DiceRoll(dice1);
 		DiceRoll(dice2);
 		add = dice1 + dice2;
 
-		cout << "DICE NUMBER:" << dice1 << "," << dice2 << "," << add << endl;
-		player = InputCheck(dice1, dice2, add, map, 9);
+		cout << "\nDICE NUMBER:" << dice1 << "," << dice2 << "," << add << endl;
+		
+		if (plyMap[dice1 - 1] == 0 || plyMap[dice2 - 1] == 0 || plyMap[add - 1] == 0)
+		{
+			player = InputCheck(dice1, dice2, add, plyMap, 9);
+		}
+		else
+		{
+			cout<< "マスを取れませんでした。\n";
+		}
+		
 		//マス塗り
-		map[player - 1] = 1;
+		plyMap[player - 1] = 1;
 		//残りマスチェック
-		Check(zero, map, 9);
+		Check(zero, plyMap, 9);
 		if (zero == 0)
 		{
 			judgeflag = true;
@@ -72,23 +92,24 @@ int main(void)
 		add = 0;
 		zero = 0;
 
+		cout << "\n==========CPU TURN==========\n";
 		cout << "残りのマス:";
-		for (int i = 0;i < 9;i++)
+		for (int i = 0; i < 9; i++)
 		{
-			if (map[i] == 0)
+			if (cpuMap[i] == 0)
 			{
 				cout << i + 1 << ",";
 			}
 		}
-
-		cout << "\n==========CPU TURN==========\n";
+		
 		DiceRoll(dice1);
 		DiceRoll(dice2);
 		add = dice1 + dice2;
-		cout << "DICE NUMBER:" << dice1 << "," << dice2 << "," << add << endl;
-		Roll(map, 9, dice1, dice2, add);
+		
+		cout << "\nDICE NUMBER:" << dice1 << "," << dice2 << "," << add << endl;
+		Roll(cpuMap, 9, dice1, dice2, add);
 		//残りマスチェック
-		Check(zero, map, 9);
+		Check(zero, cpuMap, 9);
 		if (zero == 0)
 		{
 			break;
@@ -96,41 +117,10 @@ int main(void)
 		//初期化
 		add = 0;
 		zero = 0;
-
-		cout << "残りのマス:";
-		for (int i = 0;i < 9;i++)
-		{
-			if (map[i] == 0)
-			{
-				cout << i + 1 << ",";
-			}
-		}
 	}
-	//集計
-	for (int i = 0;i < 9;i++)
-	{
-		if (map[i] == 1)
-		{
-			plyP++;
-		}
-		else if (map[i] == 2)
-		{
-			cpuP++;
-		}
-	}
+	
 	//結果
-	if (plyP == cpuP)
-	{
-		if (judgeflag == true)
-		{
-			cout << "PLAYER WIN!";
-		}
-		else
-		{
-			cout << "CPU WIN!";
-		}
-	}
-	else if (plyP > cpuP)
+	if (judgeflag == true)
 	{
 		cout << "PLAYER WIN!";
 	}
