@@ -7,10 +7,13 @@ using namespace std;
 
 Player::Player()
 {
+	//乱数の初期化
+	srand((unsigned int)time(NULL));
+	//プレイヤーの値設定
 	hp = MAX_HP;
-	hit = rand() % MAX_HIT + 1;	//攻撃力
-	defense = rand() % MAX_DEFENSE + 1;//防御力
-	evasion = rand() % MAX_EVASION + 1;//回避力
+	hit = rand() % MAX_HIT + 1;
+	defense = rand() % MAX_DEFENSE + 1;
+	evasion = rand() % MAX_EVASION + 1;
 }
 
 int Player::InputCheck()
