@@ -3,7 +3,10 @@
 class Player:public Character
 {
 public:
-	Player();
+	/// <summary>
+	/// 入力チェック
+	/// </summary>
+	/// <returns></returns>
 	int InputCheck();
 };
 

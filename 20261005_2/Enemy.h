@@ -3,7 +3,9 @@
 class Enemy:public Character
 {
 public:
-	Enemy();
+	/// <summary>
+	/// “G‚Ì‘I‘ð
+	/// </summary>
 	void RandInput();
 };
 
