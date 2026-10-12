@@ -1,13 +1,23 @@
 #include<iostream>
-#include"Character.h"
+#include"Boss.h"
+#include"Enemy.h"
+#include"Player.h"
 using namespace std;
 int main(void)
 {
 	//コンストラクタ
-	Character character("提婆達多");
-	cout << character.GetName() << endl;
+	Boss boss("魔王");
+	Enemy enemy("ゾンビ");
+	Player player("勇者");
 
-	character.Attack();
+	cout << player.GetName() << endl;
+	player.Attack();
+
+	cout << "\n" << enemy.GetName() << endl;
+	enemy.Attack();
+
+	cout << "\n" << boss.GetName() << endl;
+	boss.Attack();
 
 	return 0;
 }
