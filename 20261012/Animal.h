@@ -17,6 +17,6 @@ public:
 	/// <summary>
 	/// –Â‚­
 	/// </summary>
-	virtual void Speak();
+	virtual void Speak();	//‰¼‘zŠÖ”virtual
 };
 
