@@ -13,5 +13,5 @@ std::string Character::GetName()
 
 void Character::Attack()
 {
-	std::cout << "UŒ‚‚µ‚Ü‚·" << std::endl;
+	std::cout << "UŒ‚‚µ‚½I" << std::endl;
 }
