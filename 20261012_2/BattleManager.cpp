@@ -6,34 +6,16 @@
 #include<string>
 using namespace std;
 
-void BattleManager::StartBattle()
+void BattleManager::StartBattle(Character*player, Character* enemy, Character* boss)
 {
-	string playername;
-	string enemyname;
-	string bossname;
+	
+	cout << "\n" << player->GetName() << endl;
+	player->Attack();
 
-	cout << "名前を入力してください。" << endl;
-	cout << "勇者:";
-	cin >> playername;
-	cout << "敵:";
-	cin >> enemyname;
-	cout << "ボス:";
-	cin >> bossname;
+	cout << "\n" << enemy->GetName() << endl;
+	enemy->Attack();
 
-	cout << "===============================BATTLE START===============================";
-
-	//コンストラクタ
-	Boss boss(bossname);
-	Enemy enemy(enemyname);
-	Player player(playername);
-
-	cout << "\n" << player.GetName() << endl;
-	player.Attack();
-
-	cout << "\n" << enemy.GetName() << endl;
-	enemy.Attack();
-
-	cout << "\n" << boss.GetName() << endl;
-	boss.Attack();
+	cout << "\n" << boss->GetName() << endl;
+	boss->Attack();
 
 }
